@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ntalk-staging-65857-authRole",
+      "UnauthRoleArn": "arn:aws:iam::993272790168:role/amplify-ntalk-staging-65857-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::993272790168:role/amplify-ntalk-staging-65857-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-ntalk-staging-65857-deployment",
+      "UnauthRoleName": "amplify-ntalk-staging-65857-unauthRole",
+      "StackName": "amplify-ntalk-staging-65857",
+      "StackId": "arn:aws:cloudformation:us-east-2:993272790168:stack/amplify-ntalk-staging-65857/88866a80-2e4e-11ec-a101-0251969e69b8",
+      "AmplifyAppId": "dgbdq14clms95"
+    },
+    "categories": {
+      "auth": {
+        "ntalk": {}
+      }
+    }
+  }
+}

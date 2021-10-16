@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "ntalk",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authntalk",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
