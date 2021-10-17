@@ -1,27 +1,16 @@
 import * as React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
-import ChatRoomItem from '../components/ChatRoomItem';
-import chatRoomsData from '../assets/dummy-data/ChatRooms'
-import {Auth} from 'aws-amplify'
-export default function HomeScreen() {
-
-  const logOut = ()=>{
-    Auth.signOut();
-  }
+import users from '../assets/dummy-data/Users'
+import UsersItem from '../components/UsersItem';
+export default function UsersScreen() {
 
   return (
     <View style={styles.page}>
       <FlatList 
-        data={chatRoomsData}
-        renderItem={({item})=><ChatRoomItem chatRoom={item}/>}
+        data={users}
+        renderItem={({item})=><UsersItem user={item}/>}
         showsHorizontalScrollIndicator={false}
       />
-      
-      {/* <Pressable 
-        onPress={logOut}
-        style={styles.button}>
-        <Text>LogOut</Text>
-      </Pressable> */}
     </View> 
     
   );

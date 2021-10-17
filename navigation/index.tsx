@@ -1,10 +1,11 @@
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme, DarkTheme, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, Image, Platform, Text, useWindowDimensions, View } from 'react-native';
+import { ColorSchemeName, Image, Platform, Pressable, Text, useWindowDimensions, View } from 'react-native';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
 import HomeScreen from '../screens/HomeScreen';
+import UsersScreen from '../screens/UsersScreen'
 import ChatRoomScreen from '../screens/ChatRoomScreen';
 import { RootStackParamList} from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -39,7 +40,14 @@ function RootNavigator() {
         options={{
           headerTitle: ChatRoomHeader,
           headerBackTitleVisible: false,
-          title: "Username"
+        }}  
+      />
+      <Stack.Screen 
+        name="UsersScreen" 
+        component={UsersScreen} 
+        options={{
+          title: "Users",
+          // headerBackTitleVisible: false,
         }}  
       />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
@@ -51,6 +59,13 @@ function RootNavigator() {
 }
 const HomeHeader = () => {
   const {width} = useWindowDimensions();
+  const navigation = useNavigation();
+  const onPress = () => {
+    navigation.navigate("UsersScreen");
+  }
+  // const onPress = () => {
+  //   //UsersScreen
+  // }
   return(
     <View 
       style={{
@@ -82,12 +97,15 @@ const HomeHeader = () => {
           color="black" 
           style={{marginHorizontal: 10}}
         />
-        <Feather 
-          name='edit-2' 
-          size={24} 
-          color="black" 
-          style={{marginHorizontal: 10}}  
-        />
+        <Pressable onPress={onPress}>
+          <Feather 
+            name='edit-2' 
+            size={24} 
+            color="black" 
+            style={{marginHorizontal: 10}}  
+          />
+        </Pressable>
+        
       </View>
     </View>
   )
