@@ -16,13 +16,13 @@ export default function TabOneScreen() {
         renderItem={({item})=><ChatRoomItem chatRoom={item}/>}
         showsHorizontalScrollIndicator={false}
       />
-      {/* 
-      <Pressable 
+      
+      {/* <Pressable 
         onPress={logOut}
         style={styles.button}>
         <Text>LogOut</Text>
       </Pressable> */}
-    </View>
+    </View> 
     
   );
 }
