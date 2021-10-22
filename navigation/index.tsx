@@ -105,7 +105,6 @@ const HomeHeader = () => {
             style={{marginHorizontal: 10}}  
           />
         </Pressable>
-        
       </View>
     </View>
   )
