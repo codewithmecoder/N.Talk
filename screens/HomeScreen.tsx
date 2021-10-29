@@ -15,7 +15,6 @@ export default function HomeScreen() {
       const chatRooms = (await DataStore.query(ChatRoomUser))
         .filter(chatRoomUser => chatRoomUser.user.id === userData.attributes.sub)
         .map(chatRoomUser => chatRoomUser.chatroom);
-      console.log(chatRooms)
       setChatRooms(chatRooms);
     }
     fetchChatRooms();
@@ -33,11 +32,11 @@ export default function HomeScreen() {
         showsHorizontalScrollIndicator={false}
       />
       
-      {/* <Pressable 
+      <Pressable 
         onPress={logOut}
         style={styles.button}>
         <Text>LogOut</Text>
-      </Pressable> */}
+      </Pressable>
     </View> 
     
   );

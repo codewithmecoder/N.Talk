@@ -14,13 +14,32 @@ import {
   AntDesign 
 } from '@expo/vector-icons'
 import styles from './style'
+import {DataStore} from "@aws-amplify/datastore"
+import { Message, ChatRoom } from '../../src/models'
+import Auth from '@aws-amplify/auth'
 
-function MessageInput() {
+function MessageInput({chatRoom}) {
   const [message, setMessage] = useState('');
-  const sendMessage = () =>{
-    console.log("sending Message: ", message)
+  
+  const sendMessage = async () =>{
+    const user = await Auth.currentAuthenticatedUser();
+    const newMessage = await DataStore.save(new Message({
+      content: message,
+      userID: user.attributes.sub,
+      chatroomID: chatRoom.id,
+    }))
+    updateLastMessage(newMessage);
     setMessage('');
   }
+
+  const updateLastMessage = async (newMessage) => {
+    DataStore.save(ChatRoom.copyOf(
+      chatRoom,
+      updatedChatRoom => {
+        updatedChatRoom.LastMessage = newMessage;
+      }))
+  }
+
   const onPlusClicked = ()=> {
     console.log("On Plus Clicked")
   }
