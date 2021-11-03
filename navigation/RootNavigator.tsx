@@ -21,14 +21,18 @@ function RootNavigator() {
       <Stack.Screen 
         name="Home" 
         component={HomeScreen} 
-        options={{ headerTitle: HomeHeader }} />
+        options={{ headerTitle: HomeHeader, headerStyle:{
+          backgroundColor: "#ecf0f1"
+        } }} />
       <Stack.Screen 
         name="ChatRoom" 
         component={ChatRoomScreen} 
         options={({route}) => ({
           headerTitle: () => <ChatRoomHeader id={route.params?.id } />,
           headerBackTitleVisible: false,
-        })}  
+          headerStyle:{
+          backgroundColor: "#ecf0f1"
+        } })}  
       />
       <Stack.Screen 
         name="UsersScreen" 
