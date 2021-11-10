@@ -1,11 +1,22 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import { Auth, DataStore } from "aws-amplify";
+import React, {useEffect, useState} from "react";
 import { Pressable, View, Image, Text, useWindowDimensions } from "react-native";
+import { User } from "../src/models";
 
 const HomeHeader = () => {
   const {width} = useWindowDimensions();
+  const [user, setUser] = useState<User | null>(null);
   const navigation = useNavigation();
+  useEffect(()=> {
+    const fetchUsers = async()=>{
+        const authUser = await Auth.currentAuthenticatedUser();
+        const user = await DataStore.query(User, authUser.attributes.sub) || null;
+        setUser(user)
+    }
+    fetchUsers();
+  }, [])
   const onPress = () => {
     navigation.navigate("UsersScreen");
   }
@@ -22,7 +33,7 @@ const HomeHeader = () => {
         paddingRight: 20
       }}>
       <Image 
-        source={{uri: "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg"}}
+        source={{uri: user?.imageUri}}
         style={{
           width: 30, 
           height: 30, 

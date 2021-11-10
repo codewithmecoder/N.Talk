@@ -38,6 +38,20 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: '800',
     fontSize: 35,
+  },
+  image:{
+    width: "50%",
+    height: 150,
+    borderRadius: 10
+  },
+  sendImageContainer:{
+    flexDirection: 'row',
+    margin: 10,
+    alignSelf: 'stretch',
+    justifyContent: 'space-between',
+    borderWidth: 1,
+    borderColor: 'lightgray',
+    borderRadius: 10
   }
 })
 
